@@ -1,6 +1,11 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
-import { selectNameFilter } from './filtersSlice';
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from '../contacts/operations';
+import { apiLogoutUser } from '../auth/operations';
 
 const initialState = {
   items: [],
@@ -11,7 +16,7 @@ const initialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialState,
-  extraReducers: builder =>
+  extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, state => {
         state.loading = true;
@@ -48,20 +53,21 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      }),
+      })
+      .addCase(apiLogoutUser.fulfilled, state => {
+        state.items = [];
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(updateContact.fulfilled, (state, action) => {
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      });
+  },
 });
-
-export const selectContacts = state => state.contactsData.items;
-export const selectIsLoading = state => state.contactsData.loading;
-export const selectError = state => state.contactsData.error;
-
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, filter) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
 
 export default contactsSlice.reducer;

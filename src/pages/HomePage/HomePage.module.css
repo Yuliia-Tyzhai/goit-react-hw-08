@@ -1,0 +1,24 @@
+.title {
+  color: rgb(51, 241, 4);
+  font-family: cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../assets/telephone-min.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  margin: 0; /* Прибирає відступ */
+  padding: 0; /* Прибирає відступ */
+  position: fixed; /* Фіксоване позиціонування для охоплення всього екрану */
+  top: 0;
+  left: 0;
+}

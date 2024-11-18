@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+  margin-right: 50px;
+}
+
+.username {
+  font-weight: 700;
+  color: rgb(141, 219, 231);
+}
+
+.btn {
+  background-color: rgb(55, 0, 255);
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  border-color: black;
+  box-shadow: 2px 2px 2px rgb(3, 18, 82);
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
