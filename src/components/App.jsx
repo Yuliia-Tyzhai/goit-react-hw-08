@@ -25,7 +25,7 @@ function App() {
     dispatch(apiRefreshUser());
   }, [dispatch]);
 
-  console.log('Redux State:', { isLoggedIn, isRefreshing });
+  // console.log('Redux State:', { isLoggedIn, isRefreshing });
 
   if (isRefreshing) {
     return <p>Loading...</p>;
