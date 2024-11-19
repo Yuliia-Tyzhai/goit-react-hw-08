@@ -16,11 +16,11 @@ import contactsReducer from './contacts/slice';
 import filtersReducer from './filters/slice';
 import { authReducer } from './auth/slice';
 
-const contactsConfig = {
-  key: 'contacts',
-  storage,
-  //   whitelist: ["users"], // blacklist: ["showProfilesList"]
-};
+// const contactsConfig = {
+//   key: 'contacts',
+//   storage,
+//   //   whitelist: ["users"], // blacklist: ["showProfilesList"]
+// };
 
 const authPersistConfig = {
   key: 'auth',
